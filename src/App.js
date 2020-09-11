@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import Auth from "./components/auth/auth";
 import CreateQuiz from "./components/createQuiz/createQuiz";
-import Quiz from "./components/play/quizBoard";
+import Quiz from "./components/quizBoard/quizBoard";
 import Home from "./components/Home";
 import { Route } from "react-router-dom";
 import ProtectedRoute from "./helper/protectRoute";
