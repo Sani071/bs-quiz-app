@@ -1,9 +1,10 @@
 import {
   SET_NEW_QUIZ,
   GET_QUIZES,
-  SET_QUIZES,
+  // SET_QUIZES,
   SET_SCORE,
   GET_SCORE,
+  SET_FB_QUIZ
 } from "../actions/types";
 const initState = {
   quizList: [],
@@ -18,9 +19,9 @@ const quizReducer = (state = initState, action) => {
       return state;
     }
     case GET_QUIZES: {
-      return { ...state, quizList: payload };
+      return { ...state };
     }
-    case SET_QUIZES: {
+    case SET_FB_QUIZ: {
       return { ...state, quizList: payload };
     }
     case SET_SCORE: {

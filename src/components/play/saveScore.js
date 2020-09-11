@@ -21,11 +21,10 @@ export default function SaveScoreForm({ score }) {
     };
     setDone(true);
     dispatch(setScore(record));
-    //   firebase.scores().push(record, () => {
-    //     alert("ALLAH")
-    // });
+    firebase.scores().push(record, () => {
+      console.log("@bs save on firebase");
+    });
   };
-  console.log({ firebase });
   return (
     <div className="text-center mx-auto">
       <h1>Your Score: {score}</h1>

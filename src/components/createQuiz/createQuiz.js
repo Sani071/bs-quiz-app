@@ -5,6 +5,7 @@ import { toArray } from "lodash";
 import shortid from "shortid";
 import { setNewQuizAction, getQuizesAction } from "../../redux/actions/creator";
 import QuizList from "./quizList";
+import { useFirebase } from "../../Firebase/FirebaseContext";
 
 export default function CreateQuiz() {
   const [name, setname] = useState("");
@@ -12,6 +13,7 @@ export default function CreateQuiz() {
   const [correctAnswer, setCorrectAnswer] = useState("");
   const dispatch = useDispatch();
   const [options, setOptions] = useState([]);
+  const firebase = useFirebase();
 
   const optionSetter = (e, sl = 0) => {
     const { name, value } = e.target;
@@ -43,10 +45,16 @@ export default function CreateQuiz() {
       correctAnswer: correctAnswer.value,
       id: shortid(),
     };
-    dispatch(setNewQuizAction(payload));
+
+    //save data into localStorage
+    //dispatch(setNewQuizAction(payload));
+
+    // Save data on firebase database
+    firebase.quiz().push(payload, () => {
+      console.log("@bs save on firebase")
+     });
   };
   useEffect(() => {
-    console.log("callon");
     const _quizOptions = toArray(quizOptions);
     const _options = _quizOptions.map((itm, idx) => {
       return {

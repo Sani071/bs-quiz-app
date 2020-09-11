@@ -18,6 +18,7 @@ class Firebase {
   }
 
   scores = () => this.db.ref("scores");
+  quiz = () => this.db.ref("quiz");
 }
 
 export default Firebase;

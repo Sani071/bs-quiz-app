@@ -7,16 +7,20 @@ import { toArray, shuffle } from "lodash";
 import {
   getQuizesAction,
   setRemainingQuizes,
+  setFirebaseData,
 } from "../../redux/actions/creator";
+import { useFirebase } from "../../Firebase/FirebaseContext";
+import { formatFirebaseResponse } from "../../helper/helper";
 
 export default function QuizBoard({ history }) {
   const [currentQuiz, setCurrentQuiz] = useState(null);
   const [loading, setLoading] = useState(true);
   const [score, setScore] = useState(0);
   const [quizeNumber, setquizeNumber] = useState(0);
-  const [done, setDone] = useState(!false);
+  const [done, setDone] = useState(false);
   const [length, setLength] = useState(0);
 
+  const firebase = useFirebase();
   const dispatch = useDispatch();
   const _quizes = useSelector((state) => state.quiz.quizList);
   const quizes = shuffle(toArray(_quizes));
@@ -48,8 +52,17 @@ export default function QuizBoard({ history }) {
     }
   }, [currentQuiz, quizes, changeQuiz]);
 
-  // ** Get All Quizes from store***
-  useEffect(() => dispatch(getQuizesAction()), []);
+  // ** Get All Quizes from store**
+  useEffect(() => {
+    firebase.quiz().once("value", (snapshot) => {
+      const data = snapshot.val();
+      const formattedData = formatFirebaseResponse(data);
+      //set data into store from firebase
+      dispatch(setFirebaseData(formattedData));
+    });
+
+    dispatch(getQuizesAction());
+  }, []);
 
   // ** Set quizes size
   useEffect(() => {
@@ -57,7 +70,7 @@ export default function QuizBoard({ history }) {
       setLength(quizes.length);
     }
   }, [quizes]);
-  
+
   return (
     <>
       {!done && currentQuiz && (

@@ -6,7 +6,8 @@ import {
   SET_NEW_QUIZ,
   SET_QUIZES,
   SET_SCORE,
-  GET_SCORE
+  GET_SCORE,
+  SET_FB_QUIZ
 } from "./types";
 // ******************All action creator of Auth******************
 import { UseLocalStorage } from "../../helper/helper";
@@ -75,16 +76,23 @@ export const setNewQuizAction = (payload) => {
   };
 };
 
+export const setFirebaseData = (payload) => {
+  return {
+    type: SET_FB_QUIZ,
+    payload,
+  };
+}
+
 export const getQuizesAction = (payload) => {
   return {
     type: GET_QUIZES,
-    payload: getQuizes(),
+    payload,
   };
 };
 
 export const setRemainingQuizes = (payload) => {
   return {
-    type: SET_QUIZES,
+    type: SET_FB_QUIZ,
     payload,
   };
 };
