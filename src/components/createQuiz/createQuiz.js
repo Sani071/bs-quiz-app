@@ -3,13 +3,34 @@ import Select from "react-select";
 import { useDispatch } from "react-redux";
 import { toArray } from "lodash";
 import shortid from "shortid";
-import { setNewQuizAction, getQuizesAction } from "../../redux/actions/creator";
+import {
+  setNewQuizAction,
+  getQuizesAction,
+  setFirebaseData,
+} from "../../redux/actions/creator";
 import QuizList from "./quizList";
 import { useFirebase } from "../../Firebase/FirebaseContext";
+import { formatFirebaseResponse } from "../../helper/helper";
+import { toast } from "react-toastify";
+
+const initData = {
+  option1: {
+    value: "",
+  },
+  option2: {
+    value: "",
+  },
+  option3: {
+    value: "",
+  },
+  option4: {
+    value: "",
+  },
+};
 
 export default function CreateQuiz() {
   const [name, setname] = useState("");
-  const [quizOptions, setQuizOptions] = useState();
+  const [quizOptions, setQuizOptions] = useState(initData);
   const [correctAnswer, setCorrectAnswer] = useState("");
   const dispatch = useDispatch();
   const [options, setOptions] = useState([]);
@@ -51,9 +72,23 @@ export default function CreateQuiz() {
 
     // Save data on firebase database
     firebase.quiz().push(payload, () => {
-      console.log("@bs save on firebase")
-     });
+      setQuizOptions(initData);
+      getQuizfromFB();
+      setname("");
+      toast.success("New Quiz Added");
+      console.log("@bs save on firebase");
+    });
   };
+
+  const getQuizfromFB = () => {
+    firebase.quiz().once("value", (snapshot) => {
+      const data = snapshot.val();
+      const formattedData = formatFirebaseResponse(data);
+      //set data into store from firebase
+      dispatch(setFirebaseData(formattedData));
+    });
+  };
+
   useEffect(() => {
     const _quizOptions = toArray(quizOptions);
     const _options = _quizOptions.map((itm, idx) => {
@@ -66,8 +101,10 @@ export default function CreateQuiz() {
   }, [quizOptions]);
 
   useEffect(() => {
+    getQuizfromFB();
     dispatch(getQuizesAction());
   }, []);
+
   return (
     <>
       <div className="card shadow">
@@ -93,6 +130,7 @@ export default function CreateQuiz() {
                   className="form-control mb-2"
                   placeholder="option 1"
                   name="option1"
+                  value={quizOptions.option1.value}
                   onChange={(e) => optionSetter(e, 0)}
                 />
               </div>
@@ -103,6 +141,7 @@ export default function CreateQuiz() {
                   className="form-control mb-2"
                   placeholder="option 2"
                   name="option2"
+                  value={quizOptions.option2.value}
                   onChange={(e) => optionSetter(e, 1)}
                 />
               </div>
@@ -113,6 +152,7 @@ export default function CreateQuiz() {
                   className="form-control mb-2"
                   placeholder="option 3"
                   name="option3"
+                  value={quizOptions.option3.value}
                   onChange={(e) => optionSetter(e, 2)}
                 />
               </div>
@@ -122,6 +162,7 @@ export default function CreateQuiz() {
                 <input
                   className="form-control mb-2"
                   placeholder="option 4"
+                  value={quizOptions.option4.value}
                   name="option4"
                   onChange={(e) => optionSetter(e, 3)}
                 />

@@ -7,11 +7,13 @@ import Home from "./components/Home";
 import { Route } from "react-router-dom";
 import ProtectedRoute from "./helper/protectRoute";
 import ScoreList from "./components/scoresList/scoresList";
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
     <div className="App container mt-3">
+      <ToastContainer position="bottom-right"/>
       <Route exact path="/" component={Home} />
       <Route exact path="/admin" component={Auth} />
       <Route path="/quiz" component={Quiz} />
