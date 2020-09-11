@@ -7,7 +7,7 @@ import {
   SET_QUIZES,
   SET_SCORE,
   GET_SCORE,
-  SET_FB_QUIZ
+  SET_FB_QUIZ,
 } from "./types";
 // ******************All action creator of Auth******************
 import { UseLocalStorage } from "../../helper/helper";
@@ -81,7 +81,7 @@ export const setFirebaseData = (payload) => {
     type: SET_FB_QUIZ,
     payload,
   };
-}
+};
 
 export const getQuizesAction = (payload) => {
   return {
@@ -97,8 +97,13 @@ export const setRemainingQuizes = (payload) => {
   };
 };
 
+// ******** Action crea for score **********
 export const setScore = (payload) => {
-  UseLocalStorage("setItem", "scores",  JSON.stringify([...getScores(), payload]));
+  UseLocalStorage(
+    "setItem",
+    "scores",
+    JSON.stringify([...getScores(), payload])
+  );
   return {
     type: SET_SCORE,
     payload: getScores(),
@@ -106,9 +111,11 @@ export const setScore = (payload) => {
 };
 
 export const getScore = (payload) => {
-  console.log({payload})
+  console.log({ payload });
   const scores = getScores();
-  const _payload = payload ? scores.filter((score) => score.name === payload) : scores;
+  const _payload = payload
+    ? scores.filter((score) => score.name.includes(payload))
+    : scores;
   return {
     type: GET_SCORE,
     payload: _payload,

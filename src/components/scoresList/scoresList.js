@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import moment from "moment";
+// import moment from "moment";
 import { getScore, setScore } from "../../redux/actions/creator";
 import { Link } from "react-router-dom";
-import { debounce } from "lodash";
+// import { debounce } from "lodash";
 import { useFirebase } from "../../Firebase/FirebaseContext";
 import { formatFirebaseResponse } from "../../helper/helper";
 import List from "./list";
