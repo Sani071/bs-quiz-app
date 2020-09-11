@@ -1,4 +1,4 @@
-[View App](https://github.com/facebook/create-react-app).
+[View App](https://master.d3q9wp8q8j7ozx.amplifyapp.com/scoreList).
 
 ## BS-Quiz-App
 Setps to run the app:
