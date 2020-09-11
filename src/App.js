@@ -7,8 +7,8 @@ import Home from "./components/Home";
 import { Route } from "react-router-dom";
 import ProtectedRoute from "./helper/protectRoute";
 import ScoreList from "./components/scoresList/scoresList";
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
