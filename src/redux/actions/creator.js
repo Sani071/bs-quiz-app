@@ -44,7 +44,7 @@ export const loginAction = (payload) => {
     );
     return {
       type: LOGIN,
-      payload: new Boolean(user.length),
+      payload: user.length ? true : false,
     };
   } else {
     return {
