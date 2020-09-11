@@ -764,9 +764,9 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.8.3"
 
-"@babel/plugin-transform-react-display-name@7.8.3", "@babel/plugin-transform-react-display-name@^7.8.3":
+"@babel/plugin-transform-react-dis-name@7.8.3", "@babel/plugin-transform-react-dis-name@^7.8.3":
   version "7.8.3"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-react-display-name/-/plugin-transform-react-display-name-7.8.3.tgz#70ded987c91609f78353dd76d2fb2a0bb991e8e5"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-react-dis-name/-/plugin-transform-react-dis-name-7.8.3.tgz#70ded987c91609f78353dd76d2fb2a0bb991e8e5"
   integrity sha512-3Jy/PCw8Fe6uBKtEgz3M82ljt+lTg+xJaM4og+eyu83qLT87ZUSckn0wy7r31jflURWLO83TW6Ylf7lyXj3m5A==
   dependencies:
     "@babel/helper-plugin-utils" "^7.8.3"
@@ -967,7 +967,7 @@
   integrity sha512-aJBYF23MPj0RNdp/4bHnAP0NVqqZRr9kl0NAOP4nJCex6OYVio59+dnQzsAWFuogdLyeaKA1hmfUIVZkY5J+TQ==
   dependencies:
     "@babel/helper-plugin-utils" "^7.8.3"
-    "@babel/plugin-transform-react-display-name" "^7.8.3"
+    "@babel/plugin-transform-react-dis-name" "^7.8.3"
     "@babel/plugin-transform-react-jsx" "^7.9.1"
     "@babel/plugin-transform-react-jsx-development" "^7.9.0"
     "@babel/plugin-transform-react-jsx-self" "^7.9.0"
@@ -2386,7 +2386,7 @@ babel-preset-react-app@^9.1.2:
     "@babel/plugin-proposal-numeric-separator" "7.8.3"
     "@babel/plugin-proposal-optional-chaining" "7.9.0"
     "@babel/plugin-transform-flow-strip-types" "7.9.0"
-    "@babel/plugin-transform-react-display-name" "7.8.3"
+    "@babel/plugin-transform-react-dis-name" "7.8.3"
     "@babel/plugin-transform-runtime" "7.9.0"
     "@babel/preset-env" "7.9.0"
     "@babel/preset-react" "7.9.1"
@@ -3450,7 +3450,7 @@ cssnano-preset-default@^4.0.7:
     postcss-minify-params "^4.0.2"
     postcss-minify-selectors "^4.0.2"
     postcss-normalize-charset "^4.0.1"
-    postcss-normalize-display-values "^4.0.2"
+    postcss-normalize-dis-values "^4.0.2"
     postcss-normalize-positions "^4.0.2"
     postcss-normalize-repeat-style "^4.0.2"
     postcss-normalize-string "^4.0.2"
@@ -7999,9 +7999,9 @@ postcss-normalize-charset@^4.0.1:
   dependencies:
     postcss "^7.0.0"
 
-postcss-normalize-display-values@^4.0.2:
+postcss-normalize-dis-values@^4.0.2:
   version "4.0.2"
-  resolved "https://registry.yarnpkg.com/postcss-normalize-display-values/-/postcss-normalize-display-values-4.0.2.tgz#0dbe04a4ce9063d4667ed2be476bb830c825935a"
+  resolved "https://registry.yarnpkg.com/postcss-normalize-dis-values/-/postcss-normalize-dis-values-4.0.2.tgz#0dbe04a4ce9063d4667ed2be476bb830c825935a"
   integrity sha512-3F2jcsaMW7+VtRMAqf/3m4cPFhPD3EFRgNs18u+k3lTJJlVe7d0YPO+bnwqo2xg8YiRpDXJI2u8A0wqJxMsQuQ==
   dependencies:
     cssnano-util-get-match "^4.0.0"
