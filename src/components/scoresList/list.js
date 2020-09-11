@@ -2,6 +2,7 @@ import React from "react";
 import moment from "moment";
 
 export default function List({ record, isHidden }) {
+  console.log({record})
   return (
     <div>
       <li key={record.id} className="prev-score">

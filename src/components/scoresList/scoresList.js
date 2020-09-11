@@ -69,10 +69,10 @@ export default function ScoreList({ userName, title, isHidden }) {
           <ul id="prevScoresList">
             {firebaseData
               ? firebaseData.map((record) => (
-                  <List isHidden={isHidden} record={record} />
+                  <List key={record.id} isHidden={isHidden} record={record} />
                 ))
               : scores.map((record) => (
-                  <List isHidden={isHidden} record={record} />
+                  <List key={record.id} isHidden={isHidden} record={record} />
                 ))}
           </ul>
           <div className="text-center mb-4">

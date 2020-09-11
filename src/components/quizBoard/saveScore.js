@@ -17,8 +17,9 @@ export default function SaveScoreForm({ score }) {
       name: username,
       score,
       id: shortid(),
-      time: new Date(),
+      time: `${new Date()}`,
     };
+    console.log({record})
     setDone(true);
     dispatch(setScore(record));
     firebase.scores().push(record, () => {
